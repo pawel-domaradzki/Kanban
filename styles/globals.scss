@@ -1,0 +1,10 @@
+@use "./reset" as *;
+@use "./abstracts/colors" as *;
+
+:root {
+  $background: $lightGreyLightBg;
+}
+
+.dark {
+  $background: $veryDarkGreyDarkBg;
+}
