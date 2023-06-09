@@ -2,9 +2,13 @@
 @use "./abstracts/colors" as *;
 
 :root {
-  $background: $lightGreyLightBg;
+  --background: #{$lightGreyLightBg};
 }
 
 .dark {
-  $background: $veryDarkGreyDarkBg;
+  --background: #{$veryDarkGreyDarkBg};
+}
+
+body {
+  background-color: var(--background);
 }

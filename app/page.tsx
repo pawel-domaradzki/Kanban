@@ -1,14 +1,12 @@
-import Image from "next/image";
-
 import Header from "../components/Header";
-import ThemeToggle from "@/components/ui/ThemeToggle";
+import ThemeSwitch from "@/components/ui/ThemeSwitch";
 
 export default function Home() {
   return (
     <main>
       Kanban
       <Header>Header</Header>
-      <ThemeToggle />
+      <ThemeSwitch />
     </main>
   );
 }

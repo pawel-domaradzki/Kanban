@@ -1,25 +1,24 @@
-import { render, screen, fireEvent } from "@testing-library/react";
-import { useTheme } from "next-themes";
-import ThemeToggle from "@/components/ui/ThemeToggle";
+import { render, fireEvent } from "@testing-library/react";
+import ThemeSwitch from "@/components/ui/ThemeSwitch";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { act } from "react-dom/test-utils";
 
-jest.mock("next-themes", () => ({
-  useTheme: jest.fn(),
-}));
+describe("ThemeSwitch", () => {
+  it("changes theme on switch and updates body class", async () => {
+    const { getByRole } = render(
+      <ThemeProvider>
+        <ThemeSwitch />
+      </ThemeProvider>
+    );
 
-describe("ThemeToggle Component", () => {
-  it("sets the theme correctly when each button is clicked", () => {
-    const setTheme = jest.fn();
-    (useTheme as jest.Mock).mockReturnValue({ setTheme });
+    const switchButton = getByRole("switch");
 
-    render(<ThemeToggle />);
+    expect(switchButton.getAttribute("aria-checked")).toBe("false");
 
-    fireEvent.click(screen.getByText("light"));
-    expect(setTheme).toHaveBeenCalledWith("light");
+    await act(async () => {
+      fireEvent.click(switchButton);
+    });
 
-    fireEvent.click(screen.getByText("dark"));
-    expect(setTheme).toHaveBeenCalledWith("dark");
-
-    fireEvent.click(screen.getByText("system"));
-    expect(setTheme).toHaveBeenCalledWith("system");
+    expect(switchButton.getAttribute("aria-checked")).toBe("true");
   });
 });
