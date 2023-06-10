@@ -1,8 +1,6 @@
-interface ThemeIcons {
-  className: string;
-}
+import { IconProps } from "@/types";
 
-export const Dark = ({ className }: ThemeIcons) => (
+export const DarkIcon = ({ className }: IconProps) => (
   <svg
     viewBox="0 0 16 16"
     xmlns="http://www.w3.org/2000/svg"
@@ -15,7 +13,7 @@ export const Dark = ({ className }: ThemeIcons) => (
   </svg>
 );
 
-export const Light = ({ className }: ThemeIcons) => (
+export const LightIcon = ({ className }: IconProps) => (
   <svg
     viewBox="0 0 19 19"
     xmlns="http://www.w3.org/2000/svg"

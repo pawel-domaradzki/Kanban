@@ -1,8 +1,8 @@
 import { ThemeProvider } from "@/components/ThemeProvider";
 import "@/styles/globals.scss";
-import { Inter } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const Jakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Kanban",
@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className} suppressHydrationWarning>
+      <body className={Jakarta.className} suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
         </ThemeProvider>

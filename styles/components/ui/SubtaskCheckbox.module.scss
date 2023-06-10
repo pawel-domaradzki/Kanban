@@ -1,0 +1,51 @@
+@use "../../abstracts/index" as *;
+
+.SubtaskCheckbox {
+  display: flex;
+  align-items: center;
+  margin-inline: auto;
+  width: 86%;
+  padding: 1rem 0;
+  border-radius: 7px;
+  background-color: var(--background);
+
+  .CheckboxRoot {
+    margin-left: clamp(1rem, 2.5vw, 2rem);
+    background-color: $white;
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    border: solid rgba(168, 164, 255, 0.4) 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .CheckboxIndicator {
+    color: $white;
+  }
+
+  .Label {
+    font-weight: $fw-bold;
+    padding-left: 15px;
+    font-size: 15px;
+    line-height: 1;
+  }
+
+  .CheckIcon {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+.SubtaskCheckbox:has(.CheckboxRoot[data-state="checked"]) {
+  .CheckboxRoot {
+    background-color: $mainPurple;
+    border: solid var(--background) 1px;
+  }
+
+  .Label {
+    color: $greyText;
+    text-decoration: line-through;
+  }
+}

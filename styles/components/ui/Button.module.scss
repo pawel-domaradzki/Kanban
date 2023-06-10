@@ -1,22 +1,45 @@
-.button {
-  padding: 10px 15px;
-  border-radius: 4px;
-  font-size: 1em;
-  border: none;
+@use "../../abstracts/index" as *;
+
+.Button {
+  box-sizing: border-box;
+  display: inline-flex;
   cursor: pointer;
+  text-decoration: none;
+  border: 0;
+  line-height: 1;
+  border-radius: 9999px;
+  padding: 1em 6em;
+  justify-content: center;
+  background-color: $mediumGrey;
+  color: $white;
+  margin: 10px 0px;
+  font-weight: $fw-bold;
 }
 
-.primary {
-  background-color: #007bff;
-  color: white;
+.Primary {
+  background-color: $mainPurple;
+  color: $white;
+
+  &:hover,
+  &:focus-visible {
+    background-color: $mainPurpleHover;
+  }
 }
 
-.secondary {
-  background-color: #6c757d;
-  color: white;
+.Secondary {
+  background-color: $white;
+  color: $mainPurple;
+  &:hover,
+  &:focus-visible {
+    background-color: $secondaryHover;
+  }
 }
 
-.destructive {
-  background-color: #dc3545;
-  color: white;
+.Destructive {
+  background-color: $red;
+  color: $white;
+  &:hover,
+  &:focus-visible {
+    background-color: $redHover;
+  }
 }

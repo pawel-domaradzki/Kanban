@@ -7,11 +7,21 @@ interface ButtonProps {
   children: React.ReactNode;
 }
 
+export enum ButtonVariant {
+  Primary = "Primary",
+  Secondary = "Secondary",
+  Destructive = "Destructive",
+}
+
 const Button: FC<ButtonProps> = ({
-  variant = "primary",
+  variant = ButtonVariant.Primary,
   children,
 }: ButtonProps) => {
-  return <button className={classNames(styles[variant])}>Button</button>;
+  return (
+    <button className={classNames(styles.Button, styles[variant])}>
+      {children}
+    </button>
+  );
 };
 
 export default Button;

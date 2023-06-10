@@ -1,7 +1,7 @@
 "use client";
 
 import * as Switch from "@radix-ui/react-switch";
-import { Dark, Light } from "./icons/Theme";
+import { DarkIcon, LightIcon } from "./icons";
 import { useTheme } from "next-themes";
 import React, { useEffect, useState } from "react";
 
@@ -17,7 +17,7 @@ const ThemeSwitch = () => {
 
   return (
     <div className={styles.ThemeSwitch}>
-      <Light className={styles.IconLight} />
+      <LightIcon className={styles.IconLight} />
       <Switch.Root
         className={styles.SwitchRoot}
         checked={resolvedTheme === "dark"}
@@ -27,7 +27,7 @@ const ThemeSwitch = () => {
       >
         {mounted && <Switch.Thumb className={styles.SwitchThumb} />}
       </Switch.Root>
-      <Dark className={styles.IconDark} />
+      <DarkIcon className={styles.IconDark} />
     </div>
   );
 };
