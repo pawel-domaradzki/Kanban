@@ -2,7 +2,7 @@
 
 import React, { FC } from "react";
 import * as Checkbox from "@radix-ui/react-checkbox";
-import { CheckIcon } from "./icons";
+import { CheckIcon } from "../icons";
 import styles from "@/styles/components/ui/SubtaskCheckbox.module.scss";
 
 const SubtaskCheckbox: FC = () => {

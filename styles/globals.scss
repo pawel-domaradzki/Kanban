@@ -1,5 +1,6 @@
 @use "./reset" as *;
 @use "./abstracts/colors" as *;
+@use "./abstracts/fonts" as *;
 
 :root {
   --background: #{$lightGreyLightBg};
@@ -14,4 +15,20 @@
 body {
   background-color: var(--background);
   color: var(--color);
+}
+
+h1 {
+  @include ts-heading-xl;
+}
+
+h2 {
+  @include ts-heading-l;
+}
+
+h3 {
+  @include ts-heading-m;
+}
+
+h4 {
+  @include ts-heading-s;
 }

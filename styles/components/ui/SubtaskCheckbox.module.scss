@@ -9,6 +9,10 @@
   border-radius: 7px;
   background-color: var(--background);
 
+  &:hover {
+    background-color: transparentColor(0.25, $mainPurple);
+  }
+
   .CheckboxRoot {
     margin-left: clamp(1rem, 2.5vw, 2rem);
     background-color: $white;
@@ -19,6 +23,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    &:hover {
+    }
   }
 
   .CheckboxIndicator {
@@ -41,7 +48,7 @@
 .SubtaskCheckbox:has(.CheckboxRoot[data-state="checked"]) {
   .CheckboxRoot {
     background-color: $mainPurple;
-    border: solid var(--background) 1px;
+    border: solid $mainPurple 1px;
   }
 
   .Label {

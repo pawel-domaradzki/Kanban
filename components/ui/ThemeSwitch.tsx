@@ -1,7 +1,7 @@
 "use client";
 
 import * as Switch from "@radix-ui/react-switch";
-import { DarkIcon, LightIcon } from "./icons";
+import { DarkIcon, LightIcon } from "../icons";
 import { useTheme } from "next-themes";
 import React, { useEffect, useState } from "react";
 

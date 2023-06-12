@@ -1,0 +1,14 @@
+@use "../../abstracts/index" as *;
+
+.TextInput {
+  font-weight: $fw-bold;
+  font-size: 18px;
+  background: none;
+  border: 1px solid transparentColor(0.25, $mainPurpleHover);
+  border-radius: 4px;
+  padding: 10px 10px 10px 5px;
+}
+
+.TextInput.Error {
+  border-color: $red;
+}
