@@ -1,0 +1,19 @@
+@use "../abstracts/index" as *;
+
+.Logo {
+  display: inline;
+}
+
+.LogoDesktop {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .Logo {
+    display: none;
+  }
+
+  .LogoDesktop {
+    display: inline;
+  }
+}

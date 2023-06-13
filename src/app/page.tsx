@@ -1,5 +1,5 @@
 import Button, { ButtonVariant } from "@/components/ui/Button";
-import Header from "../components/Header";
+import Header from "@/components/Header";
 import ThemeSwitch from "@/components/ui/ThemeSwitch";
 import SubtaskCheckbox from "@/components/ui/SubtaskCheckbox";
 import TextInput from "@/components/ui/TextInput";
@@ -11,13 +11,14 @@ export default function Home() {
     <main>
       Kanban
       <Header>Header </Header>
-      <ThemeSwitch />
+      {/* <ThemeSwitch />
       <Button variant={Primary}>Test</Button> {}
       <Button variant={Secondary}>Test</Button> {}
       <Button variant={Destructive}>Test</Button>
       <SubtaskCheckbox />
       <TextInput placeholder="Enter task name" />
-      <Dropdown />
+      <Dropdown /> */}
     </main>
   );
 }
+// dcreate sample board and render it
