@@ -1,0 +1,43 @@
+@use "../abstracts/index" as *;
+
+.PopoverBtn {
+  cursor: pointer;
+}
+
+.PopoverContent {
+  border-radius: 4px;
+  padding: 20px;
+  margin-inline: auto;
+  width: clamp(160px, 4vw, 180px);
+  background-color: var(--background);
+  border-radius: 6px;
+  box-shadow: -3px 7px 16px -9px transparentColor(0.02, $mainPurple),
+    1px 1px 6px -1px rgba(0, 0, 0, 0.1);
+  animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  h3 {
+    cursor: pointer;
+    padding: 4px 0;
+  }
+}
+
+.Edit {
+  color: $greyText;
+
+  &:hover {
+    color: $mediumGrey;
+  }
+}
+
+.Delete {
+  color: $red;
+
+  &:hover {
+    color: $redHover;
+  }
+}

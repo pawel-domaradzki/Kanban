@@ -1,11 +1,17 @@
 @use "../abstracts/index" as *;
 
 .Logo {
-  display: inline;
+  display: flex;
+  min-width: 25px;
 }
 
 .LogoDesktop {
   display: none;
+  svg {
+    path {
+      fill: red;
+    }
+  }
 }
 
 @media (min-width: 769px) {

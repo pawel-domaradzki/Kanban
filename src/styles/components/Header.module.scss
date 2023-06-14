@@ -1,0 +1,25 @@
+@use "@/styles/abstracts/index" as *;
+
+.Header {
+  background-color: var(--foreground);
+  min-height: 64px;
+  min-width: 100%;
+  display: flex;
+  align-items: center;
+
+  .Wrapper {
+    align-items: center;
+    display: flex;
+    width: $wrap;
+    margin-inline: auto;
+    justify-content: space-between;
+
+    .Start,
+    .End {
+      gap: $size-400;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

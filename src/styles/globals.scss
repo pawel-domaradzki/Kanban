@@ -3,11 +3,13 @@
 @use "./abstracts/fonts" as *;
 
 :root {
+  --foreground: #{$white};
   --background: #{$lightGreyLightBg};
   --color: #{$black};
 }
 
 .dark {
+  --foreground: #{$darkGrey};
   --background: #{$veryDarkGreyDarkBg};
   --color: #{$white};
 }
@@ -15,6 +17,10 @@
 body {
   background-color: var(--background);
   color: var(--color);
+
+  svg {
+    min-width: 5px;
+  }
 }
 
 h1 {

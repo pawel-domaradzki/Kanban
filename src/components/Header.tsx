@@ -1,21 +1,27 @@
 import { FC, ReactNode } from "react";
 import Logo from "./Logo";
-import ThemeSwitch from "./ui/ThemeSwitch";
+import DisplayBoards from "./DisplayBoards";
+import styles from "@/styles/components/Header.module.scss";
+import Button from "./ui/Button";
+import { PlusIcon } from "./icons";
+import BoardOptions from "./BoardOptions";
 
-interface HeaderProps {
-  children: ReactNode;
-}
-
-const Header: FC<HeaderProps> = ({ children }) => {
+const Header: FC = () => {
   return (
-    <header>
-      {/*logo*/}
-      <Logo />
-      {/* currentBoard*/}
-      {/*new ticket btn*/}
-      {/*manage Board*/}
-      {children}
-      <ThemeSwitch></ThemeSwitch>
+    <header className={styles.Header}>
+      <nav className={styles.Wrapper}>
+        <div className={styles.Start}>
+          <Logo />
+          <DisplayBoards />
+        </div>
+
+        <div className={styles.End}>
+          <Button btnType="Add">
+            <PlusIcon />
+          </Button>
+          <BoardOptions />
+        </div>
+      </nav>
     </header>
   );
 };

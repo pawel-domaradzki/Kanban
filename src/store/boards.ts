@@ -1,7 +1,7 @@
-export const boards = [
+export const boardsMock = [
   {
     id: "board1",
-    title: "PlatformLaunch",
+    title: "Platform Launch",
     columns: [
       {
         id: "column1",
@@ -53,6 +53,11 @@ export const boards = [
   {
     id: "board2",
     title: "Empty",
+    columns: [],
+  },
+  {
+    id: "board3",
+    title: "Empty Two",
     columns: [],
   },
 ];

@@ -5,18 +5,18 @@ $line-height-m: 1.875rem;
 $line-height-l: 2.5rem;
 $letter-spacing-wide: 2.4px;
 
-@function responsive-font-size($min, $preferred, $max) {
-  @return clamp(#{$min}rem, #{$preferred}vw, #{$max}rem);
-}
+$fs-200: 0.688rem; // approx. 11.008px
+$fs-300: 0.75rem; // 12px
+$fs-400: 0.8125rem; // approx. 13px
+$fs-500: 0.9375rem; // approx. 15px
+$fs-600: 1rem; // 16px
+$fs-700: 1.125rem; // 18px
+$fs-800: 1.5rem; // 24px
+$fs-900: 2rem; // 32px
 
-$fs-200: responsive-font-size(0.688, 2, 1); // approx. 11.008px to 16px
-$fs-300: responsive-font-size(0.75, 2.5, 1.2); // 12px to 19.2px
-$fs-400: responsive-font-size(0.8125, 3, 1.5); // approx. 13px to 24px
-$fs-500: responsive-font-size(0.9375, 3.5, 1.7); // approx. 15px to 27.2px
-$fs-600: responsive-font-size(1, 4, 2); // 16px to 32px
-$fs-700: responsive-font-size(1.125, 4.5, 2.5); // 18px to 40px
-$fs-800: responsive-font-size(1.5, 5, 3); // 24px to 48px
-$fs-900: responsive-font-size(2, 6, 4); // 32px to 64px
+@function responsive-font-size($min, $preferred, $max) {
+  @return clamp(#{$min}, #{$preferred}vw, #{$max});
+}
 
 @mixin font-stack($size, $weight, $line-height) {
   font-size: $size;
@@ -25,7 +25,8 @@ $fs-900: responsive-font-size(2, 6, 4); // 32px to 64px
 }
 
 @mixin ts-heading-xl {
-  @include font-stack($fs-800, $fw-bold, $line-height-l);
+  $fs-res-xl: responsive-font-size($fs-700, 4, $fs-800);
+  @include font-stack($fs-res-xl, $fw-bold, $line-height-l);
 }
 
 @mixin ts-heading-l {
@@ -33,7 +34,8 @@ $fs-900: responsive-font-size(2, 6, 4); // 32px to 64px
 }
 
 @mixin ts-heading-m {
-  @include font-stack($fs-500, $fw-bold, $line-height-s);
+  $fs-res-m: responsive-font-size($fs-400, 4, $fs-500);
+  @include font-stack($fs-res-m, $fw-bold, $line-height-s);
 }
 
 @mixin ts-heading-s {

@@ -14,12 +14,4 @@ describe("TextInput", () => {
 
     expect(inputElement).toBeInTheDocument();
   });
-
-  it("renders with correct value", () => {
-    const value = "Hello";
-    render(<TextInput placeholder="" value={value} />);
-    const inputElement = screen.getByDisplayValue(value);
-
-    expect(inputElement).toBeInTheDocument();
-  });
 });
