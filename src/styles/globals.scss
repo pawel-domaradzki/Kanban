@@ -38,3 +38,7 @@ h3 {
 h4 {
   @include ts-heading-s;
 }
+
+button {
+  cursor: pointer;
+}

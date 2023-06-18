@@ -2,6 +2,7 @@ export const boardsMock = [
   {
     id: "board1",
     title: "Platform Launch",
+    isActive: true,
     columns: [
       {
         id: "column1",
@@ -54,6 +55,7 @@ export const boardsMock = [
     id: "board2",
     title: "Empty",
     columns: [],
+    isActive: false,
   },
   {
     id: "board3",

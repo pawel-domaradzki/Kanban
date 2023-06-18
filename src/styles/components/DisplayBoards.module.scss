@@ -48,8 +48,7 @@
   .BoardsList {
     padding-bottom: 20px;
 
-    div,
-    button {
+    div {
       display: flex;
       gap: 10px;
       align-items: center;
@@ -60,12 +59,15 @@
       margin-right: 25px;
       padding-left: 25px;
 
-      &:hover:not(.ActiveBoard, .CreateNewBoard) {
+      &:hover:not(.ActiveBoard):not(.CreateNewBoard) {
         @include colorFontAndIcon(var(--color));
       }
     }
 
     .CreateNewBoard {
+      align-items: center;
+      display: flex;
+      gap: 10px;
       @include colorFontAndIcon($mainPurple);
 
       &:hover {

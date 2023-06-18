@@ -2,11 +2,28 @@
 
 .TextInput {
   font-weight: $fw-bold;
-  font-size: 18px;
+  font-size: $fs-res-s;
   background: none;
-  border: 1px solid transparentColor(0.25, $mainPurpleHover);
+  border: 1px solid transparentColor(0.25, $mediumGrey);
   border-radius: 4px;
   padding: 10px 10px 10px 5px;
+  &:hover {
+    border: 1px solid transparentColor(0.25, $mainPurple);
+  }
+  &:focus-visible {
+    outline: 1px solid transparentColor(0.25, $mainPurple);
+  }
+}
+
+.InputDragContainer {
+  display: flex;
+
+  align-items: center;
+  gap: 10px;
+
+  .TextInput {
+    flex-grow: 1;
+  }
 }
 
 .TextInput.Error {
