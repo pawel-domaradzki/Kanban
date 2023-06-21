@@ -1,15 +1,13 @@
 @use "../../abstracts/index" as *;
 
 .SelectTrigger {
-  margin-left: 25px;
-  margin-right: 25px;
-  width: 80%;
+  color: $mediumGrey;
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
   border-radius: 4px;
   border: solid $mainPurple 1px;
-  padding: 0 15px;
+  padding: 2px 15px;
   font-size: 13px;
   line-height: 1;
   height: 35px;
@@ -30,19 +28,19 @@
 }
 
 .SelectViewport {
-  padding: 5px;
-  background-color: aliceblue;
+  color: $mediumGrey;
+  padding: 10px 0;
 }
 
 .SelectItem {
-  font-size: 13px;
+  font-size: $fs-res-m;
   line-height: 1;
-  color: $greyText;
-  border-radius: 3px;
+  color: $mediumGrey;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  height: 25px;
-  padding: 0 35px 0 25px;
+  height: 35px;
+  padding: 0 35px 0 15px;
   position: relative;
   user-select: none;
 }
@@ -52,8 +50,8 @@
 }
 .SelectItem[data-highlighted] {
   outline: none;
-  background-color: $darkGrey;
-  color: var(--color);
+  background-color: var(--foreground);
+  color: $mainPurple;
 }
 
 .SelectItemIndicator {

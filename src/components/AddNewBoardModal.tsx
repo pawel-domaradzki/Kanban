@@ -2,13 +2,15 @@
 
 import React, { FC, ReactNode, useState } from "react";
 import styles from "@/styles/components/ui/Modal.module.scss";
+
 import * as Dialog from "@radix-ui/react-dialog";
 
 import TextInput, { TextInputDrag } from "./ui/TextInput";
-import { v4 as uuidv4 } from "uuid";
+
 import Button, { ButtonVariant } from "./ui/Button";
 import { useBoardStore } from "@/store/BoardStore";
-import { Board } from "@/types";
+
+import { createBoard, createColumn } from "@/utility";
 
 interface AddNewBoardModalProps {
   children: ReactNode;
@@ -16,18 +18,42 @@ interface AddNewBoardModalProps {
 
 const AddNewBoardModal: FC<AddNewBoardModalProps> = ({ children }) => {
   const [boardName, setBoardName] = useState("");
+  const [columnName, setColumnName] = useState("");
+
   const { addBoard, setActiveBoard } = useBoardStore();
+  const [columns, setColumns] = useState([
+    createColumn("Todo"),
+    createColumn("Doing"),
+    createColumn("Done"),
+  ]);
 
   const handleAddBoard = () => {
-    const newBoard: Board = {
-      title: boardName,
-      id: uuidv4(),
-      columns: [],
-    };
+    const validColumns = columns.filter((column) => column.title !== "");
+    const newBoard = createBoard(boardName, validColumns);
 
-    addBoard(newBoard);
-    setActiveBoard(newBoard.id);
+    if (boardName) {
+      addBoard(newBoard);
+      setActiveBoard(newBoard.id);
+    }
+    return null;
   };
+
+  const handleAddColumn = () => {
+    const newColumn = createColumn(columnName);
+    setColumns([...columns, newColumn]);
+  };
+
+  const handleRemoveColumn = (columnId: string) => {
+    setColumns(columns.filter((column) => column.id !== columnId));
+  };
+
+  const handleColumnNameChange =
+    (columnId: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
+      const updatedColumns = columns.map((column) =>
+        column.id === columnId ? { ...column, title: e.target.value } : column
+      );
+      setColumns(updatedColumns);
+    };
 
   return (
     <Dialog.Root>
@@ -43,18 +69,32 @@ const AddNewBoardModal: FC<AddNewBoardModalProps> = ({ children }) => {
           <div className={styles.ModalItem}>
             <label htmlFor="Board Name">Board Name</label>
             <TextInput
-              placeholder="e.g Web Design"
+              placeholder="e.g. Web Design"
               value={boardName}
-              onChange={(e) => setBoardName(e.target.value)}
+              onChange={(event) => setBoardName(event.target.value)}
             />
           </div>
 
           <div className={styles.ModalItem}>
             <label htmlFor="Board Columns">Board Columns</label>
-            <TextInputDrag placeholder="e.g Todo" defaultValue="Todo" />
-            <TextInputDrag placeholder="e.g Doing" defaultValue="Doing" />
+
+            <div className={styles.ItemsList}>
+              {columns.map((column) => (
+                <TextInputDrag
+                  key={column.id}
+                  placeholder={
+                    column.title ? `e.g. ${column.title}` : "e.g. Column Name"
+                  }
+                  defaultValue={column.title}
+                  onChange={handleColumnNameChange(column.id)}
+                  remove={() => handleRemoveColumn(column.id)}
+                />
+              ))}
+            </div>
           </div>
-          <Button variant={ButtonVariant.Secondary}>+ Add New Column</Button>
+          <Button variant={ButtonVariant.Secondary} onClick={handleAddColumn}>
+            + Add New Column
+          </Button>
           <Dialog.Close asChild>
             <Button onClick={handleAddBoard}>Create New Board</Button>
           </Dialog.Close>

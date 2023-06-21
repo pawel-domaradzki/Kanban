@@ -1,0 +1,7 @@
+@use "../../abstracts/index" as *;
+
+.BoardContainer {
+  min-height: 300px;
+  min-width: 100%;
+  display: inline-flex;
+}

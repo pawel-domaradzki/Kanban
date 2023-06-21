@@ -63,3 +63,16 @@ export const boardsMock = [
     columns: [],
   },
 ];
+
+const defaultColumns = [
+  {
+    id: "column1",
+    title: "To Do",
+    tasks: [],
+  },
+  {
+    id: "column2",
+    title: "Doing",
+    tasks: [],
+  },
+];

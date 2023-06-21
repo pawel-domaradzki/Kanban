@@ -13,6 +13,7 @@ export enum ButtonVariant {
   Primary = "Primary",
   Secondary = "Secondary",
   Destructive = "Destructive",
+  Disabled = "Disabled",
 }
 
 const Button: FC<ButtonProps> = ({

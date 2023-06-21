@@ -1,13 +1,13 @@
 "use client";
 
 import React, { FC } from "react";
-import { boardsMock } from "@/store/boards";
 import { BoardIcon, ChevronDownIcon } from "./icons";
 import styles from "@/styles/components/DisplayBoards.module.scss";
 import * as Dialog from "@radix-ui/react-dialog";
 import ThemeSwitch from "./ui/ThemeSwitch";
 import { useBoardStore } from "@/store/BoardStore";
 import AddNewBoardModal from "./AddNewBoardModal";
+import classNames from "classnames";
 
 const DisplayBoards: FC = () => {
   const { setActiveBoard } = useBoardStore();
@@ -37,9 +37,10 @@ const DisplayBoards: FC = () => {
                 {boards.map((board) => (
                   <div
                     key={board.id}
-                    className={
+                    className={classNames(
+                      styles.BoardItem,
                       board.id === activeBoardId ? styles.ActiveBoard : ""
-                    }
+                    )}
                     onClick={() => setActiveBoard(board.id)}
                   >
                     <BoardIcon />

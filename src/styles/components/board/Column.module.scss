@@ -1,0 +1,11 @@
+@use "../../abstracts/index" as *;
+
+.ColumnContainer {
+  margin: 10px;
+  min-width: 280px;
+  background-color: blue;
+}
+
+.IsDragging {
+  color: red;
+}

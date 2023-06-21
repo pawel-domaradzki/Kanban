@@ -1,27 +1,28 @@
 export interface IconProps {
   className?: string;
+  onClick?: () => void;
 }
 
-export interface Subtask {
+export interface SubtaskTypes {
   id: string;
   title: string;
 }
 
-export interface Task {
+export interface TaskTypes {
   id: string;
   title: string;
   description: string;
-  subtasks: Subtask[];
+  subtasks: SubtaskTypes[];
 }
 
-export interface Column {
+export interface ColumnTypes {
   id: string;
   title: string;
-  tasks: Task[];
+  tasks: TaskTypes[] | [];
 }
 
-export interface Board {
+export interface BoardTypes {
   id: string;
   title: string;
-  columns: Column[];
+  columns: ColumnTypes[];
 }

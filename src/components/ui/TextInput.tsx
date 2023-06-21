@@ -11,6 +11,10 @@ interface TextInputProps {
   onChange?: (value: any) => void;
 }
 
+interface TextInputDragProps extends TextInputProps {
+  remove: () => void;
+}
+
 export const TextInput: FC<TextInputProps> = ({
   placeholder,
   value,
@@ -29,10 +33,29 @@ export const TextInput: FC<TextInputProps> = ({
   );
 };
 
-export const TextInputDrag: FC<TextInputProps> = ({
+export const TextArea: FC<TextInputProps> = ({
   placeholder,
   value,
   defaultValue,
+  onChange,
+}) => {
+  return (
+    <textarea
+      className={styles.TextArea}
+      defaultValue={defaultValue}
+      value={value}
+      onChange={onChange}
+      placeholder={placeholder}
+    />
+  );
+};
+
+export const TextInputDrag: FC<TextInputDragProps> = ({
+  placeholder,
+  value,
+  defaultValue,
+  remove,
+  onChange,
 }) => {
   return (
     <div className={styles.InputDragContainer}>
@@ -42,8 +65,9 @@ export const TextInputDrag: FC<TextInputProps> = ({
         defaultValue={defaultValue}
         value={value}
         placeholder={placeholder}
+        onChange={onChange}
       />
-      <CrossIcon />
+      <CrossIcon onClick={remove} />
     </div>
   );
 };

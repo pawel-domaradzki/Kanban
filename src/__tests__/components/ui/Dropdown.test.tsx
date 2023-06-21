@@ -1,16 +1,32 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
-import Dropdown from "@/components/ui/Dropdown";
+import { render, screen, fireEvent } from "@testing-library/react";
+import Dropdown, { SelectItem } from "@/components/ui/Dropdown";
 
-describe("Dropdown", () => {
-  it("renders correctly", () => {
-    render(<Dropdown />);
+import { ColumnTypes } from "@/types";
 
-    const dropdownTrigger = screen.getByRole("combobox", {
-      name: "TaskStatus",
-    });
+describe("Dropdown Component", () => {
+  const mockOnChange = jest.fn();
 
-    expect(dropdownTrigger).toBeInTheDocument();
-    expect(dropdownTrigger.textContent).toBe("Doing");
+  const items: ColumnTypes[] = [
+    { id: "1", title: "Column 1", tasks: [] },
+    { id: "2", title: "Column 2", tasks: [] },
+  ];
+
+  beforeEach(() => {
+    render(
+      <Dropdown
+        items={items}
+        onChange={mockOnChange}
+        defaultValue={items[0].title}
+      />
+    );
+  });
+
+  test("renders dropdown trigger with default value", () => {
+    expect(screen.getByText(items[0].title)).toBeInTheDocument();
+  });
+
+  test("SelectItem has correct display name", () => {
+    expect(SelectItem.displayName).toBe("SelectItem");
   });
 });

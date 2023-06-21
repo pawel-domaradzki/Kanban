@@ -48,26 +48,12 @@
   .BoardsList {
     padding-bottom: 20px;
 
-    div {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      cursor: pointer;
-      border-top-right-radius: 999px;
-      border-bottom-right-radius: 999px;
-      height: 48px;
-      margin-right: 25px;
-      padding-left: 25px;
-
-      &:hover:not(.ActiveBoard):not(.CreateNewBoard) {
-        @include colorFontAndIcon(var(--color));
-      }
-    }
-
     .CreateNewBoard {
       align-items: center;
       display: flex;
       gap: 10px;
+      margin-right: 25px;
+      padding-left: 25px;
       @include colorFontAndIcon($mainPurple);
 
       &:hover {
@@ -78,6 +64,22 @@
     .ActiveBoard {
       @include colorFontAndIcon($white);
       background-color: $mainPurple;
+    }
+
+    .BoardItem {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      cursor: pointer;
+      border-top-right-radius: 999px;
+      border-bottom-right-radius: 999px;
+      height: 48px;
+      margin-right: 25px;
+      padding-left: 25px;
+
+      &:hover:not(.CreateNewBoard, .ActiveBoard) {
+        @include colorFontAndIcon(var(--color));
+      }
     }
   }
 

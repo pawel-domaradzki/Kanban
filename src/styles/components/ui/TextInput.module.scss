@@ -1,6 +1,7 @@
 @use "../../abstracts/index" as *;
 
-.TextInput {
+.TextInput,
+.TextArea {
   font-weight: $fw-bold;
   font-size: $fs-res-s;
   background: none;
@@ -15,8 +16,15 @@
   }
 }
 
+.TextArea {
+  min-height: 112px;
+}
+
 .InputDragContainer {
+  left: auto !important;
+  top: auto !important;
   display: flex;
+  padding: 5px 0;
 
   align-items: center;
   gap: 10px;

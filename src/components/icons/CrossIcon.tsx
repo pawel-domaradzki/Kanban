@@ -1,7 +1,8 @@
 import { IconProps } from "@/types";
 
-const CrossIcon = ({ className }: IconProps) => (
+const CrossIcon = ({ className, onClick }: IconProps) => (
   <svg
+    onClick={onClick}
     className={className}
     viewBox="0 0 15 15"
     width="15"
