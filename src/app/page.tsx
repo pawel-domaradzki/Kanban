@@ -3,9 +3,11 @@ import Header from "@/components/Header";
 
 export default function Home() {
   return (
-    <main>
+    <main className="AppContainer">
       <Header />
-      <Board />
+      <div className="Board">
+        <Board />
+      </div>
     </main>
   );
 }

@@ -15,7 +15,7 @@ const Board: FC<BoardProps> = ({}) => {
 
   const onDragEnd = (result: DropResult) => {
     const { source, destination, type } = result;
-
+    console.log("dragging");
     if (
       !destination ||
       (source.droppableId === destination.droppableId &&
@@ -25,6 +25,7 @@ const Board: FC<BoardProps> = ({}) => {
     }
 
     if (type === "task") {
+      console.log("moving task");
       moveTask(
         activeBoardId,
         source.droppableId,
@@ -33,12 +34,13 @@ const Board: FC<BoardProps> = ({}) => {
         destination.index
       );
     } else if (type === "column") {
+      console.log("move column");
       moveColumn(activeBoardId, source.index, destination.index);
     }
   };
 
   return activeBoard ? (
-    <>
+    <div className={styles.BoardWrapper}>
       {activeBoard.columns.length > 0 ? (
         <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId="board" direction="horizontal" type="column">
@@ -60,7 +62,7 @@ const Board: FC<BoardProps> = ({}) => {
       ) : (
         <h1>Add Columns</h1>
       )}
-    </>
+    </div>
   ) : (
     <h1>+Create New Board</h1>
   );

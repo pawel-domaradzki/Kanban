@@ -3,9 +3,10 @@ import { BoardTypes, ColumnTypes, SubtaskTypes, TaskTypes } from "@/types";
 
 export const createBoard = (
   title: string,
-  columns: ColumnTypes[] = []
+  columns: ColumnTypes[] = [],
+  passedId?: string
 ): BoardTypes => {
-  const id = uuidv4();
+  const id = passedId || uuidv4();
   return { id, title, columns };
 };
 

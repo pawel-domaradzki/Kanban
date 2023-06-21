@@ -23,6 +23,10 @@ body {
   }
 }
 
+.AppContainer {
+  overflow: hidden;
+}
+
 h1 {
   @include ts-heading-xl;
 }

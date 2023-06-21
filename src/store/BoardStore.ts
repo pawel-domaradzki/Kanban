@@ -21,6 +21,8 @@ interface BoardStore {
     sourceIndex: number,
     destinationIndex: number
   ) => void;
+  updateBoard: (updatedBoard: BoardTypes) => void;
+  removeBoard: (removedBoardId: string) => void;
 }
 
 export const useBoardStore = create<BoardStore>((set) => ({
@@ -89,4 +91,18 @@ export const useBoardStore = create<BoardStore>((set) => ({
       return { boards: state.boards };
     });
   },
+  updateBoard: (updatedBoard) =>
+    set((state) => {
+      const updatedBoards = state.boards.map((board) =>
+        board.id === updatedBoard.id ? updatedBoard : board
+      );
+      return { boards: updatedBoards };
+    }),
+  removeBoard: (boardIdToRemove) =>
+    set((state) => {
+      const updatedBoards = state.boards.filter(
+        (board) => board.id !== boardIdToRemove
+      );
+      return { boards: updatedBoards };
+    }),
 }));

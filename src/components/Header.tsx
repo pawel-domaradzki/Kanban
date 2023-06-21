@@ -5,10 +5,11 @@ import Logo from "./Logo";
 import DisplayBoards from "./DisplayBoards";
 import styles from "@/styles/components/Header.module.scss";
 import Button, { ButtonVariant } from "./ui/Button";
-import { PlusIcon } from "./icons";
+import { PlusIcon, VerticalEllipsisIcon } from "./icons";
 import BoardOptions from "./BoardOptions";
 import { useBoardStore } from "@/store/BoardStore";
 import AddNewTaskModal from "./AddNewTaskModal";
+import classNames from "classnames";
 
 const Header: FC = () => {
   const { boards, activeBoardId } = useBoardStore();
@@ -22,21 +23,23 @@ const Header: FC = () => {
           <DisplayBoards />
         </div>
 
-        <div className={styles.End}>
-          {activeBoard ? (
+        {activeBoard ? (
+          <div className={styles.End}>
             <AddNewTaskModal activeBoard={activeBoard}>
               <Button btnType="Add">
                 <PlusIcon />
               </Button>
             </AddNewTaskModal>
-          ) : (
-            <Button btnType="Add" variant={ButtonVariant.Disabled}>
+            <BoardOptions activeBoard={activeBoard} />
+          </div>
+        ) : (
+          <div className={classNames(styles.End, styles.Disabled)}>
+            <Button btnType="Add">
               <PlusIcon />
             </Button>
-          )}
-
-          <BoardOptions />
-        </div>
+            <VerticalEllipsisIcon />
+          </div>
+        )}
       </nav>
     </header>
   );

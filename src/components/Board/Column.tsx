@@ -20,13 +20,16 @@ const Column: FC<ColumnProps> = ({ column, index }) => {
           className={styles.ColumnContainer}
         >
           <div className={snapshot.isDragging ? styles.IsDragging : ""}>
-            <h1
-              className={snapshot.isDragging ? styles.IsDragging : ""}
-              {...provided.dragHandleProps}
-              aria-label={`${column.title} tasks list`}
-            >
-              {column.title}
-            </h1>
+            <div className={styles.ColumnHeader}>
+              <div className={styles.Oval} />
+              <h4
+                className={snapshot.isDragging ? styles.IsDragging : ""}
+                {...provided.dragHandleProps}
+                aria-label={`${column.title} tasks list`}
+              >
+                {column.title} ({column.tasks.length})
+              </h4>
+            </div>
 
             <Droppable droppableId={column.id} type="task">
               {(provided) => (

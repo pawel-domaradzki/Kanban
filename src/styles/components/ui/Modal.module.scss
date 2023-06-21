@@ -63,13 +63,21 @@
     @include ts-heading-m;
   }
 
+  p {
+    @include ts-heading-m;
+  }
+
   &:focus {
     outline: none;
   }
 
   .DialogTitle {
     margin: 0;
+    color: var(--color);
+    @include ts-heading-xl;
+  }
 
-    @include ts-heading-m;
+  .DialogTitle.Warn {
+    color: $red;
   }
 }

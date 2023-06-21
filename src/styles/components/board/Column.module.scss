@@ -3,9 +3,35 @@
 .ColumnContainer {
   margin: 10px;
   min-width: 280px;
-  background-color: blue;
+  border-radius: 15px;
+  padding: 5px;
+  background-color: none;
+  color: $mediumGrey;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  .TasksList {
+    height: 100vh;
+  }
 }
 
 .IsDragging {
-  color: red;
+  border-radius: 15px;
+  padding: 5px;
+  color: $mainPurple;
+  background-color: transparentColor(0.01, $darkGrey);
+}
+
+.ColumnHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-transform: uppercase;
+  .Oval {
+    width: 15px;
+    height: 15px;
+    border-radius: 999px;
+    background-color: #49c4e5;
+  }
 }
