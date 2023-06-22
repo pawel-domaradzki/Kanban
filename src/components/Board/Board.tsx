@@ -6,6 +6,8 @@ import { DragDropContext, DropResult, Droppable } from "react-beautiful-dnd";
 import styles from "@/styles/components/board/Board.module.scss";
 import Column from "./Column";
 import { KanbanTypes } from "@/types";
+import Button, { ButtonVariant } from "../ui/Button";
+import AddNewBoardModal from "../AddNewBoardModal";
 
 interface BoardProps {}
 
@@ -67,7 +69,14 @@ const Board: FC<BoardProps> = ({}) => {
       )}
     </div>
   ) : (
-    <h1>+Create New Board</h1>
+    <div className={styles.NoBoardContainer}>
+      <h1>There are no boards. Create a new board to get started.</h1>
+      <AddNewBoardModal>
+        <Button variant={ButtonVariant.Primary} btnType="Welcome">
+          +Add New Board
+        </Button>
+      </AddNewBoardModal>
+    </div>
   );
 };
 
