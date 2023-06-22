@@ -1,6 +1,7 @@
 import { create } from "zustand";
 
 import { BoardTypes, ColumnTypes, TaskTypes, SubtaskTypes } from "@/types";
+import { sampleData } from "./boards";
 
 interface BoardStore {
   boards: BoardTypes[];
@@ -23,6 +24,9 @@ interface BoardStore {
   ) => void;
   updateBoard: (updatedBoard: BoardTypes) => void;
   removeBoard: (removedBoardId: string) => void;
+  removeTask: (columnId: string, removedTaskId: string) => void;
+  updateTask: (columnId: string, updatedTask: TaskTypes) => void;
+  toggleSubtaskCompletion: (taskId: string, subtaskId: string) => void;
 }
 
 export const useBoardStore = create<BoardStore>((set) => ({
@@ -105,4 +109,73 @@ export const useBoardStore = create<BoardStore>((set) => ({
       );
       return { boards: updatedBoards };
     }),
+  removeTask: (columnId, taskId) =>
+    set((state) => {
+      const activeBoard = state.boards.find(
+        (board) => board.id === state.activeBoardId
+      );
+      if (!activeBoard) return {};
+
+      const updatedColumns = activeBoard.columns.map((column) =>
+        column.id === columnId
+          ? {
+              ...column,
+              tasks: column.tasks.filter((task) => task.id !== taskId),
+            }
+          : column
+      );
+
+      const updatedBoard = { ...activeBoard, columns: updatedColumns };
+      const updatedBoards = state.boards.map((board) =>
+        board.id === state.activeBoardId ? updatedBoard : board
+      );
+
+      return { boards: updatedBoards };
+    }),
+  updateTask: (columnId, updatedTask) =>
+    set((state) => {
+      const activeBoard = state.boards.find(
+        (board) => board.id === state.activeBoardId
+      );
+      if (!activeBoard) return {};
+
+      const updatedColumns = activeBoard.columns.map((column) => {
+        if (column.id === columnId) {
+          const updatedTasks = column.tasks.map((task) =>
+            task.id === updatedTask.id ? updatedTask : task
+          );
+          return { ...column, tasks: updatedTasks };
+        }
+        return column;
+      });
+
+      const updatedBoard = { ...activeBoard, columns: updatedColumns };
+      const updatedBoards = state.boards.map((board) =>
+        board.id === state.activeBoardId ? updatedBoard : board
+      );
+
+      return { boards: updatedBoards };
+    }),
+  toggleSubtaskCompletion: (taskId, subtaskId) => {
+    set((state) => {
+      const updatedBoards = state.boards.map((board) => {
+        const updatedColumns = board.columns.map((column) => {
+          const updatedTasks = column.tasks.map((task) => {
+            if (task.id === taskId) {
+              const updatedSubtasks = task.subtasks.map((subtask) =>
+                subtask.id === subtaskId
+                  ? { ...subtask, completed: !subtask.completed }
+                  : subtask
+              );
+              return { ...task, subtasks: updatedSubtasks };
+            }
+            return task;
+          });
+          return { ...column, tasks: updatedTasks };
+        });
+        return { ...board, columns: updatedColumns };
+      });
+      return { boards: updatedBoards };
+    });
+  },
 }));

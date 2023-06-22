@@ -2,7 +2,8 @@
 
 .ColumnContainer {
   margin: 10px;
-  min-width: 280px;
+  width: 280px;
+
   border-radius: 15px;
   padding: 5px;
   background-color: none;
@@ -19,8 +20,11 @@
 .IsDragging {
   border-radius: 15px;
   padding: 5px;
-  color: $mainPurple;
+
   background-color: transparentColor(0.01, $darkGrey);
+  .ColumnHeader {
+    color: $mainPurple;
+  }
 }
 
 .ColumnHeader {

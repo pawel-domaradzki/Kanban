@@ -28,6 +28,7 @@ export const createTask = (
 
 export const createSubtask = (title: string): SubtaskTypes => {
   const id = uuidv4();
+  const completed = false;
 
-  return { title, id };
+  return { title, id, completed };
 };

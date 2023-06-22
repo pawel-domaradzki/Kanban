@@ -6,6 +6,7 @@ export interface IconProps {
 export interface SubtaskTypes {
   id: string;
   title: string;
+  completed: boolean;
 }
 
 export interface TaskTypes {
@@ -25,4 +26,11 @@ export interface BoardTypes {
   id: string;
   title: string;
   columns: ColumnTypes[];
+}
+
+export enum KanbanTypes {
+  Board = "Board",
+  Column = "Column",
+  Task = "Task",
+  Subtask = "Subtask",
 }

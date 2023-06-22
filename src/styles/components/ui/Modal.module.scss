@@ -64,7 +64,7 @@
   }
 
   p {
-    @include ts-heading-m;
+    @include ts-body-l;
   }
 
   &:focus {
@@ -72,6 +72,8 @@
   }
 
   .DialogTitle {
+    max-width: 90%;
+    overflow: hidden;
     margin: 0;
     color: var(--color);
     @include ts-heading-xl;
@@ -79,5 +81,13 @@
 
   .DialogTitle.Warn {
     color: $red;
+  }
+}
+
+.TitleWithIcon {
+  display: flex;
+  justify-content: space-between;
+  button {
+    padding: 5px;
   }
 }

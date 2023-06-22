@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   margin-inline: auto;
-  width: 86%;
+  width: 100%;
   padding: 1rem 0;
   border-radius: 7px;
   background-color: var(--background);
@@ -14,7 +14,7 @@
   }
 
   .CheckboxRoot {
-    margin-left: clamp(1rem, 2.5vw, 2rem);
+    margin-left: 15px;
     background-color: $white;
     width: 16px;
     height: 16px;

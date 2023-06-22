@@ -21,7 +21,10 @@ const DisplayBoards: FC = () => {
     <>
       {boards.length ? (
         <Dialog.Root>
-          <Dialog.Trigger aria-label="Display Boards">
+          <Dialog.Trigger
+            aria-label="Display Boards"
+            onClick={() => console.log(boards)}
+          >
             <div className={styles.CurrentBoard}>
               <h1>{activeBoard?.title}</h1>
               <ChevronDownIcon className={styles.ChevronIcon} />

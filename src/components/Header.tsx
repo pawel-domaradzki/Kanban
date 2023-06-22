@@ -6,10 +6,12 @@ import DisplayBoards from "./DisplayBoards";
 import styles from "@/styles/components/Header.module.scss";
 import Button, { ButtonVariant } from "./ui/Button";
 import { PlusIcon, VerticalEllipsisIcon } from "./icons";
-import BoardOptions from "./BoardOptions";
+
 import { useBoardStore } from "@/store/BoardStore";
 import AddNewTaskModal from "./AddNewTaskModal";
 import classNames from "classnames";
+import Options from "./Options";
+import { KanbanTypes } from "@/types";
 
 const Header: FC = () => {
   const { boards, activeBoardId } = useBoardStore();
@@ -30,11 +32,14 @@ const Header: FC = () => {
                 <PlusIcon />
               </Button>
             </AddNewTaskModal>
-            <BoardOptions activeBoard={activeBoard} />
+            <Options
+              activeBoard={activeBoard}
+              optionsType={KanbanTypes.Board}
+            />
           </div>
         ) : (
           <div className={classNames(styles.End, styles.Disabled)}>
-            <Button btnType="Add">
+            <Button variant={ButtonVariant.Disabled} btnType="Add">
               <PlusIcon />
             </Button>
             <VerticalEllipsisIcon />

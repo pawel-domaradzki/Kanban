@@ -5,6 +5,7 @@ import React, { FC } from "react";
 import { DragDropContext, DropResult, Droppable } from "react-beautiful-dnd";
 import styles from "@/styles/components/board/Board.module.scss";
 import Column from "./Column";
+import { KanbanTypes } from "@/types";
 
 interface BoardProps {}
 
@@ -15,7 +16,7 @@ const Board: FC<BoardProps> = ({}) => {
 
   const onDragEnd = (result: DropResult) => {
     const { source, destination, type } = result;
-    console.log("dragging");
+
     if (
       !destination ||
       (source.droppableId === destination.droppableId &&
@@ -24,8 +25,7 @@ const Board: FC<BoardProps> = ({}) => {
       return;
     }
 
-    if (type === "task") {
-      console.log("moving task");
+    if (type === KanbanTypes.Task) {
       moveTask(
         activeBoardId,
         source.droppableId,
@@ -33,8 +33,7 @@ const Board: FC<BoardProps> = ({}) => {
         source.index,
         destination.index
       );
-    } else if (type === "column") {
-      console.log("move column");
+    } else if (type === KanbanTypes.Column) {
       moveColumn(activeBoardId, source.index, destination.index);
     }
   };
@@ -43,7 +42,11 @@ const Board: FC<BoardProps> = ({}) => {
     <div className={styles.BoardWrapper}>
       {activeBoard.columns.length > 0 ? (
         <DragDropContext onDragEnd={onDragEnd}>
-          <Droppable droppableId="board" direction="horizontal" type="column">
+          <Droppable
+            droppableId="board"
+            direction="horizontal"
+            type={KanbanTypes.Column}
+          >
             {(provided) => (
               <div
                 className={styles.BoardContainer}

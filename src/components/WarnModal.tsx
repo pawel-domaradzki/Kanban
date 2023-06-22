@@ -8,36 +8,54 @@ import * as Dialog from "@radix-ui/react-dialog";
 import Button, { ButtonVariant } from "./ui/Button";
 import { useBoardStore } from "@/store/BoardStore";
 
-import { BoardTypes } from "@/types";
+import { BoardTypes, ColumnTypes, KanbanTypes, TaskTypes } from "@/types";
 import classNames from "classnames";
 
 interface WarnModalProps {
   type: string;
-  activeBoard: BoardTypes;
+  activeBoard?: BoardTypes;
+  activeColumn?: ColumnTypes;
+  activeTask?: TaskTypes;
   children: ReactNode;
 }
 
-const WarnModal: FC<WarnModalProps> = ({ children, type, activeBoard }) => {
-  const { removeBoard } = useBoardStore();
+const WarnModal: FC<WarnModalProps> = ({
+  children,
+  type,
+  activeBoard,
+  activeColumn,
+  activeTask,
+}) => {
+  const { removeBoard, removeTask } = useBoardStore();
   const handleRemove = () => {
-    type === "board" ? removeBoard(activeBoard.id) : console.log("remove Task");
+    if (type === KanbanTypes.Board && activeBoard) {
+      removeBoard(activeBoard.id);
+    }
+
+    if (type === KanbanTypes.Task && activeColumn && activeTask) {
+      removeTask(activeColumn.id, activeTask.id);
+    }
   };
 
   return (
     <Dialog.Root defaultOpen={false}>
-      <Dialog.Trigger asChild aria-label="Add New Board">
+      <Dialog.Trigger asChild aria-label={`Add New ${type}`}>
         <div className={styles.CurrentBoard}>{children}</div>
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className={styles.DialogOverlay} />
         <Dialog.Content className={styles.DialogContent}>
           <Dialog.Title className={classNames(styles.DialogTitle, styles.Warn)}>
-            Delete this board?
+            Delete this {type}?
           </Dialog.Title>
 
           <div className={styles.ModalItem}>
             <p>
-              {` Are you sure you want to delete the '${activeBoard.title}' board?
+              {` Are you sure you want to delete the '${
+                type == KanbanTypes.Board
+                  ? activeBoard?.title
+                  : activeTask?.title
+              }' ${type}?
               This action will remove all columns and tasks and cannot be
               reversed.`}
             </p>
