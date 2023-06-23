@@ -36,7 +36,10 @@ const AddNewTaskModal: FC<AddNewTaskModalProps> = ({
   const [subtasks, setSubtasks] = useState([createSubtask("")]);
 
   const handleAddTask = () => {
+    if (!columns.length) return null;
+
     const validSubtasks = subtasks.filter((subtask) => subtask.title !== "");
+
     const selectedColumn = columns.find(
       (column: ColumnTypes) => column.title === selectedDropdownValue
     );

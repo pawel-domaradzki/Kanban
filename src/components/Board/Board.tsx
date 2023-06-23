@@ -8,6 +8,8 @@ import Column from "./Column";
 import { KanbanTypes } from "@/types";
 import Button, { ButtonVariant } from "../ui/Button";
 import AddNewBoardModal from "../AddNewBoardModal";
+import DisplayBoards from "../DisplayBoards";
+import EditBoardModal from "../EditBoardModal";
 
 interface BoardProps {}
 
@@ -43,34 +45,54 @@ const Board: FC<BoardProps> = ({}) => {
   return activeBoard ? (
     <div className={styles.BoardWrapper}>
       {activeBoard.columns.length > 0 ? (
-        <DragDropContext onDragEnd={onDragEnd}>
-          <Droppable
-            droppableId="board"
-            direction="horizontal"
-            type={KanbanTypes.Column}
-          >
-            {(provided) => (
-              <div
-                className={styles.BoardContainer}
-                ref={provided.innerRef}
-                {...provided.droppableProps}
-              >
-                {activeBoard.columns.map((column, index) => (
-                  <Column key={column.id} column={column} index={index} />
-                ))}
+        <>
+          <DragDropContext onDragEnd={onDragEnd}>
+            <Droppable
+              droppableId="board"
+              direction="horizontal"
+              type={KanbanTypes.Column}
+            >
+              {(provided) => (
+                <div
+                  className={styles.ColumnsContainer}
+                  ref={provided.innerRef}
+                  {...provided.droppableProps}
+                >
+                  {activeBoard.columns.map((column, index) => (
+                    <Column key={column.id} column={column} index={index} />
+                  ))}
 
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
-        </DragDropContext>
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+          </DragDropContext>
+          <EditBoardModal activeBoard={activeBoard}>
+            <button className={styles.NewColumn}>+New Column</button>
+          </EditBoardModal>
+        </>
       ) : (
-        <h1>Add Columns</h1>
+        <div className={styles.EmptyBoard}>
+          <h1>This board is empty. Create a new column to get started.</h1>
+          <EditBoardModal activeBoard={activeBoard}>
+            <Button variant={ButtonVariant.Primary} btnType="Welcome">
+              +Add New Column
+            </Button>
+          </EditBoardModal>
+        </div>
       )}
     </div>
   ) : (
-    <div className={styles.NoBoardContainer}>
-      <h1>There are no boards. Create a new board to get started.</h1>
+    <div className={styles.EmptyBoard}>
+      <h1>
+        {boards.length ? (
+          <span>
+            <DisplayBoards showIcon={true} /> or create a new one.
+          </span>
+        ) : (
+          "There are no boards. Create a new board to get started."
+        )}
+      </h1>
       <AddNewBoardModal>
         <Button variant={ButtonVariant.Primary} btnType="Welcome">
           +Add New Board

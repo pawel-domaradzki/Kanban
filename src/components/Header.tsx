@@ -22,10 +22,10 @@ const Header: FC = () => {
       <nav className={styles.Wrapper}>
         <div className={styles.Start}>
           <Logo />
-          <DisplayBoards />
+          <DisplayBoards showIcon />
         </div>
 
-        {activeBoard ? (
+        {activeBoard && activeBoard.columns.length ? (
           <div className={styles.End}>
             <AddNewTaskModal activeBoard={activeBoard}>
               <Button btnType="Add">

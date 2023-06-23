@@ -1,6 +1,6 @@
 @use "../../abstracts/index" as *;
 
-.NoBoardContainer {
+.EmptyBoard {
   width: 80%;
   margin-inline: auto;
   text-align: center;
@@ -12,12 +12,39 @@
   gap: 10px;
 }
 
-.BoardContainer {
+.ColumnsContainer {
   min-height: 300px;
-  min-width: 100%;
   display: inline-flex;
 }
 
 .BoardWrapper {
+  min-height: 300px;
+  min-width: 100%;
+  display: inline-flex;
+  display: flex;
   overflow: auto;
+
+  .NewColumn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include ts-heading-xl;
+    color: $mediumGrey;
+    border-radius: 6px;
+    margin: 48px 14px;
+    max-height: calc(100vh - 162px);
+    min-width: 280px;
+    background: linear-gradient(
+      180deg,
+      rgba(43, 44, 55, 0.25) 0%,
+      rgba(43, 44, 55, 0.13) 100%
+    );
+    &:hover {
+      background: linear-gradient(
+        180deg,
+        rgba(43, 44, 55, 0.5) 0%,
+        rgba(43, 44, 55, 0.3) 100%
+      );
+    }
+  }
 }

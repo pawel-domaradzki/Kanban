@@ -9,7 +9,7 @@ import { useBoardStore } from "@/store/BoardStore";
 import AddNewBoardModal from "./AddNewBoardModal";
 import classNames from "classnames";
 
-const DisplayBoards: FC = () => {
+const DisplayBoards: FC<{ showIcon: boolean }> = ({ showIcon }) => {
   const { setActiveBoard } = useBoardStore();
   const boards = useBoardStore((state) => state.boards);
 
@@ -21,13 +21,12 @@ const DisplayBoards: FC = () => {
     <>
       {boards.length ? (
         <Dialog.Root>
-          <Dialog.Trigger
-            aria-label="Display Boards"
-            onClick={() => console.log(boards)}
-          >
+          <Dialog.Trigger aria-label="Display Boards">
             <div className={styles.CurrentBoard}>
-              <h1 className={styles.BoardTitle}>{activeBoard?.title}</h1>
-              <ChevronDownIcon className={styles.ChevronIcon} />
+              <h1 className={styles.BoardTitle}>
+                {activeBoard ? activeBoard.title : "Select Board"}
+              </h1>
+              {showIcon && <ChevronDownIcon className={styles.ChevronIcon} />}
             </div>
           </Dialog.Trigger>
           <Dialog.Portal>

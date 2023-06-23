@@ -2,7 +2,7 @@
 
 .ColumnContainer {
   margin: 10px;
-  width: 280px;
+  width: 285px;
 
   border-radius: 15px;
   padding: 5px;
@@ -19,6 +19,7 @@
 
 .IsDragging {
   border-radius: 15px;
+  width: 290px;
   padding: 5px;
 
   background-color: transparentColor(0.01, $darkGrey);

@@ -22,7 +22,7 @@ import { BoardTypes } from "@/types";
 interface EditBoardModalProps {
   children: ReactNode;
   activeBoard: BoardTypes;
-  hideBoardOptions: Dispatch<SetStateAction<boolean>>;
+  hideBoardOptions?: Dispatch<SetStateAction<boolean>>;
 }
 
 const EditBoardModal: FC<EditBoardModalProps> = ({
@@ -44,7 +44,6 @@ const EditBoardModal: FC<EditBoardModalProps> = ({
     const updatedBoard = createBoard(boardName, validColumns, activeBoard.id);
 
     if (boardName) {
-      console.log(updatedBoard);
       updateBoard(updatedBoard);
     }
     return null;
@@ -70,7 +69,7 @@ const EditBoardModal: FC<EditBoardModalProps> = ({
   return (
     <Dialog.Root onOpenChange={hideBoardOptions}>
       <Dialog.Trigger asChild aria-label="Add New Board">
-        <div className={styles.CurrentBoard}>{children}</div>
+        {children}
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className={styles.DialogOverlay} />
