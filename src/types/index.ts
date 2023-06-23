@@ -19,6 +19,7 @@ export interface TaskTypes {
 export interface ColumnTypes {
   id: string;
   title: string;
+  ovalColor: string;
   tasks: TaskTypes[] | [];
 }
 

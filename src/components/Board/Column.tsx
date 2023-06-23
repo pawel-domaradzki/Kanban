@@ -4,10 +4,10 @@ import styles from "@/styles/components/board/Column.module.scss";
 import { ColumnTypes, KanbanTypes } from "@/types";
 import Task from "./Task";
 import ViewTaskModal from "../ViewTaskModal";
+import ColorPicker from "../ColorPicker";
 
 interface ColumnProps {
   index: number;
-
   column: ColumnTypes;
 }
 
@@ -26,7 +26,7 @@ const Column: FC<ColumnProps> = ({ column, index }) => {
             }
           >
             <div className={styles.ColumnHeader}>
-              <div className={styles.Oval} />
+              <ColorPicker key={column.id} columnId={column.id} />
               <h4
                 className={
                   snapshot.isDragging ? styles.IsDragging : styles.isSleeping

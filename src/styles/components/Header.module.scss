@@ -15,13 +15,17 @@
     display: flex;
     width: $wrap;
     margin-inline: auto;
-    justify-content: space-between;
+
+    .Start {
+      flex: 1;
+
+      justify-content: flex-start;
+    }
 
     .Start,
     .End {
       gap: $size-400;
       display: flex;
-      justify-content: center;
       align-items: center;
     }
 

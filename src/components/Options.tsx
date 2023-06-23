@@ -77,8 +77,6 @@ const Options: FC<OptionsProps> = ({
               </WarnModal>
             </>
           )}
-
-          <Popover.Arrow />
         </Popover.Content>
       </Popover.Portal>
     </Popover.Root>

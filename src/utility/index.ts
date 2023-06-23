@@ -13,7 +13,8 @@ export const createBoard = (
 export const createColumn = (title: string): ColumnTypes => {
   const id = uuidv4();
   const tasks: TaskTypes[] = [];
-  return { title, id, tasks };
+  const ovalColor = "#49c4e5";
+  return { title, id, tasks, ovalColor };
 };
 
 export const createTask = (

@@ -48,6 +48,10 @@
   .BoardsList {
     padding-bottom: 20px;
 
+    .BoardIcon {
+      flex-shrink: 0;
+    }
+
     .CreateNewBoard {
       align-items: center;
       display: flex;
@@ -89,14 +93,29 @@
   }
 }
 
+.BoardTitle {
+  max-width: 150px;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .CurrentBoard {
   display: flex;
   align-items: center;
   cursor: pointer;
 
   .ChevronIcon {
+    flex-shrink: 0;
     margin-left: $size-200;
     height: 13px;
     width: 13px;
+  }
+}
+
+@media (min-width: $screen-xsm) {
+  .BoardTitle {
+    max-width: 300px;
   }
 }

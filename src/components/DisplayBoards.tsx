@@ -26,7 +26,7 @@ const DisplayBoards: FC = () => {
             onClick={() => console.log(boards)}
           >
             <div className={styles.CurrentBoard}>
-              <h1>{activeBoard?.title}</h1>
+              <h1 className={styles.BoardTitle}>{activeBoard?.title}</h1>
               <ChevronDownIcon className={styles.ChevronIcon} />
             </div>
           </Dialog.Trigger>
@@ -46,8 +46,8 @@ const DisplayBoards: FC = () => {
                     )}
                     onClick={() => setActiveBoard(board.id)}
                   >
-                    <BoardIcon />
-                    <h2>{board.title}</h2>
+                    <BoardIcon className={styles.BoardIcon} />
+                    <h2 className={styles.BoardTitle}>{board.title}</h2>
                   </div>
                 ))}
 

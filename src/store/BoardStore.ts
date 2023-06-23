@@ -22,6 +22,7 @@ interface BoardStore {
     sourceIndex: number,
     destinationIndex: number
   ) => void;
+  setOvalColor: (columnId: string, color: string) => void;
   updateBoard: (updatedBoard: BoardTypes) => void;
   removeBoard: (removedBoardId: string) => void;
   removeTask: (columnId: string, removedTaskId: string) => void;
@@ -30,8 +31,8 @@ interface BoardStore {
 }
 
 export const useBoardStore = create<BoardStore>((set) => ({
-  boards: [],
-  activeBoardId: "",
+  boards: sampleData,
+  activeBoardId: "430224fb-29f5-466a-a309-693f9344333b",
   addBoard: (board) => set((state) => ({ boards: [...state.boards, board] })),
   setActiveBoard: (activeBoardId) =>
     set(() => ({ activeBoardId: activeBoardId })),
@@ -178,4 +179,18 @@ export const useBoardStore = create<BoardStore>((set) => ({
       return { boards: updatedBoards };
     });
   },
+  setOvalColor: (columnId, color) =>
+    set((state) => {
+      const activeBoardId = state.activeBoardId;
+      const updatedBoards = state.boards.map((board) => {
+        if (board.id === activeBoardId) {
+          const updatedColumns = board.columns.map((column) =>
+            column.id === columnId ? { ...column, ovalColor: color } : column
+          );
+          return { ...board, columns: updatedColumns };
+        }
+        return board;
+      });
+      return { boards: updatedBoards };
+    }),
 }));

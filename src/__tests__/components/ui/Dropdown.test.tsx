@@ -8,8 +8,8 @@ describe("Dropdown Component", () => {
   const mockOnChange = jest.fn();
 
   const items: ColumnTypes[] = [
-    { id: "1", title: "Column 1", tasks: [] },
-    { id: "2", title: "Column 2", tasks: [] },
+    { id: "1", title: "Column 1", ovalColor: "#fff", tasks: [] },
+    { id: "2", title: "Column 2", ovalColor: "#fff", tasks: [] },
   ];
 
   beforeEach(() => {

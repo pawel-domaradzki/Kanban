@@ -1,6 +1,10 @@
 import { IconProps } from "@/types";
 
-const PlusIcon = ({ className }: IconProps) => (
+interface PlusIconProps extends IconProps {
+  color?: string;
+}
+
+const PlusIcon = ({ className, color }: PlusIconProps) => (
   <svg
     className={className}
     width="15"
@@ -14,7 +18,7 @@ const PlusIcon = ({ className }: IconProps) => (
       fill="currentColor"
       fillRule="evenodd"
       clipRule="evenodd"
-      stroke="#fff"
+      stroke={color ? color : "currentColor"}
       strokeWidth="2"
     ></path>
   </svg>
