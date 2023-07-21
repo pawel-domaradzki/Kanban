@@ -2,7 +2,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import "@/styles/globals.scss";
 import { Plus_Jakarta_Sans } from "next/font/google";
 
-const Jakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
+const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Kanban",
@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={Jakarta.className} suppressHydrationWarning>
+      <body className={jakarta.className} suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
         </ThemeProvider>
