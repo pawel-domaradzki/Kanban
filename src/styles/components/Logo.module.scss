@@ -7,19 +7,32 @@
 
 .LogoDesktop {
   display: none;
-  svg {
-    path {
-      fill: red;
-    }
-  }
 }
 
 @media (min-width: 769px) {
-  .Logo {
-    display: none;
+  .LogoContainer {
+    display: flex;
+    margin-top: 25px;
+    margin-left: 25px;
+
+    .Logo {
+      display: none;
+    }
+
+    .LogoDesktop {
+      display: block;
+    }
   }
 
-  .LogoDesktop {
-    display: inline;
+  .LogoContainer.border {
+    padding-right: 1.5rem;
+    border-right: var(--lines) solid 1px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+    margin-left: 0;
+    margin-bottom: 5px;
   }
 }

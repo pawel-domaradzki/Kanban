@@ -15,14 +15,17 @@
 .ColumnsContainer {
   min-height: 300px;
   display: inline-flex;
+  height: 100%;
 }
 
 .BoardWrapper {
+  padding-left: calc(4% - 15px);
   min-height: 300px;
   min-width: 100%;
   display: inline-flex;
   display: flex;
   overflow: auto;
+  height: calc(100vh - 65px);
 
   .NewColumn {
     display: flex;
@@ -34,17 +37,16 @@
     margin: 48px 14px;
     max-height: calc(100vh - 162px);
     min-width: 280px;
-    background: linear-gradient(
-      180deg,
-      rgba(43, 44, 55, 0.25) 0%,
-      rgba(43, 44, 55, 0.13) 100%
-    );
+    background: var(--gradient);
     &:hover {
-      background: linear-gradient(
-        180deg,
-        rgba(43, 44, 55, 0.5) 0%,
-        rgba(43, 44, 55, 0.3) 100%
-      );
+      color: $mediumGreyHover;
+      background: var(--gradientHover);
     }
+  }
+}
+
+@media (min-width: $screen-md) {
+  .BoardWrapper {
+    padding-left: 9px;
   }
 }

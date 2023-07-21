@@ -1,15 +1,28 @@
-import Board from "@/components/Board/Board";
+"use client";
 
+import Board from "@/components/Board/Board";
 import Header from "@/components/Header";
+import SideMenu from "@/components/SideMenu";
+import { useState } from "react";
 
 export default function Home() {
-  return (
-    <main className="AppContainer">
-      <Header />
+  const [displayedSideMenu, setDisplayedSideMenu] = useState(false);
 
-      <div className="Board">
-        <Board />
-      </div>
-    </main>
+  const handlePopSideMenu = () => {
+    setDisplayedSideMenu(!displayedSideMenu);
+  };
+
+  return (
+    <div className="Wrapper">
+      <SideMenu
+        displayedSideMenu={displayedSideMenu}
+        popDisplay={handlePopSideMenu}
+      />
+      <main className="AppContainer">
+        <Header displayedSideMenu={displayedSideMenu} />
+
+        <Board displayedSideMenu={displayedSideMenu} />
+      </main>
+    </div>
   );
 }

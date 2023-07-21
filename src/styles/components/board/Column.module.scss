@@ -3,17 +3,15 @@
 .ColumnContainer {
   margin: 10px;
   width: 285px;
-
   border-radius: 15px;
   padding: 5px;
   background-color: none;
   color: $mediumGrey;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 
   .TasksList {
-    height: 100vh;
+    height: calc(100vh - 155px);
   }
 }
 
@@ -33,6 +31,11 @@
   align-items: center;
   gap: 10px;
   text-transform: uppercase;
+
+  &:hover {
+    color: $mediumGreyHover;
+  }
+
   .Oval {
     width: 15px;
     height: 15px;

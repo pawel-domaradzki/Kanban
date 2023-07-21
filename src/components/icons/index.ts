@@ -6,3 +6,5 @@ export { default as PlusIcon } from "./PlusIcon";
 export { DarkIcon, LightIcon } from "./ThemeIcons";
 export { default as VerticalEllipsisIcon } from "./VerticalEllipsisIcon";
 export { default as BoardIcon } from "./BoardIcon";
+export { default as HideMenuIcon } from "./HideMenuIcon";
+export { default as ShowMenuIcon } from "./ShowMenuIcon";

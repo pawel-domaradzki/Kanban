@@ -278,4 +278,9 @@ export const sampleData = [
       },
     ],
   },
+  {
+    id: "240224fb-29f5-466a-a309-693f4312333b",
+    title: "Board B",
+    columns: [],
+  },
 ];

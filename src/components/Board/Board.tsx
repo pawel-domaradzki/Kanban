@@ -11,9 +11,11 @@ import AddNewBoardModal from "../AddNewBoardModal";
 import DisplayBoards from "../DisplayBoards";
 import EditBoardModal from "../EditBoardModal";
 
-interface BoardProps {}
+interface BoardProps {
+  displayedSideMenu: boolean;
+}
 
-const Board: FC<BoardProps> = ({}) => {
+const Board: FC<BoardProps> = ({ displayedSideMenu }) => {
   const { boards, activeBoardId, moveTask, moveColumn } = useBoardStore();
 
   const activeBoard = boards.find(({ id }) => id === activeBoardId);
@@ -87,7 +89,12 @@ const Board: FC<BoardProps> = ({}) => {
       <h1>
         {boards.length ? (
           <span>
-            <DisplayBoards showIcon={true} /> or create a new one.
+            {!displayedSideMenu ? (
+              <DisplayBoards showIcon={true} />
+            ) : (
+              "Select existing board"
+            )}{" "}
+            or create a new one.
           </span>
         ) : (
           "There are no boards. Create a new board to get started."

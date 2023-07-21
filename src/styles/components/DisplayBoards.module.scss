@@ -35,62 +35,6 @@
   &:focus {
     outline: none;
   }
-
-  .DialogTitle {
-    padding-top: 20px;
-    padding-bottom: 18px;
-    padding-left: 25px;
-    margin: 0;
-    text-transform: uppercase;
-    @include ts-heading-s;
-  }
-
-  .BoardsList {
-    padding-bottom: 20px;
-
-    .BoardIcon {
-      flex-shrink: 0;
-    }
-
-    .CreateNewBoard {
-      align-items: center;
-      display: flex;
-      gap: 10px;
-      margin-right: 25px;
-      padding-left: 25px;
-      @include colorFontAndIcon($mainPurple);
-
-      &:hover {
-        @include colorFontAndIcon($mainPurpleHover);
-      }
-    }
-
-    .ActiveBoard {
-      @include colorFontAndIcon($white);
-      background-color: $mainPurple;
-    }
-
-    .BoardItem {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      cursor: pointer;
-      border-top-right-radius: 999px;
-      border-bottom-right-radius: 999px;
-      height: 48px;
-      margin-right: 25px;
-      padding-left: 25px;
-
-      &:hover:not(.CreateNewBoard, .ActiveBoard) {
-        @include colorFontAndIcon(var(--color));
-      }
-    }
-  }
-
-  .ThemeSwitchWrapper {
-    padding-inline: 25px;
-    padding-bottom: 20px;
-  }
 }
 
 .BoardTitle {
@@ -104,9 +48,9 @@
 .CurrentBoard {
   display: flex;
   align-items: center;
-  cursor: pointer;
 
   .ChevronIcon {
+    cursor: pointer;
     flex-shrink: 0;
     margin-left: $size-200;
     height: 13px;
@@ -117,5 +61,11 @@
 @media (min-width: $screen-xsm) {
   .BoardTitle {
     max-width: 300px;
+  }
+}
+
+@media (min-width: $screen-md) {
+  .ChevronIcon {
+    display: none;
   }
 }

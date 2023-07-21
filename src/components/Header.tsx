@@ -1,6 +1,5 @@
 "use client";
 
-import { FC, ReactNode } from "react";
 import Logo from "./Logo";
 import DisplayBoards from "./DisplayBoards";
 import styles from "@/styles/components/Header.module.scss";
@@ -13,7 +12,7 @@ import classNames from "classnames";
 import Options from "./Options";
 import { KanbanTypes } from "@/types";
 
-const Header: FC = () => {
+const Header = ({ displayedSideMenu }: { displayedSideMenu: boolean }) => {
   const { boards, activeBoardId } = useBoardStore();
   const activeBoard = boards.find(({ id }) => id === activeBoardId);
 
@@ -21,7 +20,7 @@ const Header: FC = () => {
     <header className={styles.Header}>
       <nav className={styles.Wrapper}>
         <div className={styles.Start}>
-          <Logo />
+          {!displayedSideMenu ? <Logo passStyles="border" /> : <></>}
           <DisplayBoards showIcon />
         </div>
 
@@ -30,6 +29,7 @@ const Header: FC = () => {
             <AddNewTaskModal activeBoard={activeBoard}>
               <Button btnType="Add">
                 <PlusIcon />
+                <span className={styles.SpanText}>Add New Task</span>
               </Button>
             </AddNewTaskModal>
             <Options
@@ -41,6 +41,7 @@ const Header: FC = () => {
           <div className={classNames(styles.End, styles.Disabled)}>
             <Button variant={ButtonVariant.Disabled} btnType="Add">
               <PlusIcon />
+              <span className={styles.SpanText}>Add New Task</span>
             </Button>
             <VerticalEllipsisIcon />
           </div>

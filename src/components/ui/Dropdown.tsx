@@ -1,11 +1,11 @@
 "use client";
 
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import * as Select from "@radix-ui/react-select";
 import classnames from "classnames";
 
 import styles from "@/styles/components/ui/Dropdown.module.scss";
-import { CheckIcon, ChevronUpIcon, ChevronDownIcon } from "../icons";
+import { ChevronUpIcon, ChevronDownIcon } from "../icons";
 import { ColumnTypes } from "@/types";
 
 interface DropdownProps {

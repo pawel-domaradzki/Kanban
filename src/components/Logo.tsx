@@ -1,10 +1,16 @@
 "use client";
 
 import styles from "@/styles/components/Logo.module.scss";
+import classNames from "classnames";
 
-const Logo = () => {
+const Logo = ({ passStyles }: { passStyles?: string }) => {
   return (
-    <>
+    <div
+      className={classNames(
+        styles.LogoContainer,
+        passStyles && styles[passStyles]
+      )}
+    >
       <svg
         aria-label="Logo Mobile"
         role="img"
@@ -43,7 +49,7 @@ const Logo = () => {
           </g>
         </g>
       </svg>
-    </>
+    </div>
   );
 };
 

@@ -8,6 +8,7 @@ import ThemeSwitch from "./ui/ThemeSwitch";
 import { useBoardStore } from "@/store/BoardStore";
 import AddNewBoardModal from "./AddNewBoardModal";
 import classNames from "classnames";
+import BoardsList from "./ui/BoardsList";
 
 const DisplayBoards: FC<{ showIcon: boolean }> = ({ showIcon }) => {
   const { setActiveBoard } = useBoardStore();
@@ -21,45 +22,19 @@ const DisplayBoards: FC<{ showIcon: boolean }> = ({ showIcon }) => {
     <>
       {boards.length ? (
         <Dialog.Root>
-          <Dialog.Trigger aria-label="Display Boards">
-            <div className={styles.CurrentBoard}>
-              <h1 className={styles.BoardTitle}>
-                {activeBoard ? activeBoard.title : "Select Board"}
-              </h1>
+          <div className={styles.CurrentBoard}>
+            <h1 className={styles.BoardTitle}>
+              {activeBoard ? activeBoard.title : "No board selected"}
+            </h1>
+            <Dialog.Trigger aria-label="Display Boards">
               {showIcon && <ChevronDownIcon className={styles.ChevronIcon} />}
-            </div>
-          </Dialog.Trigger>
+            </Dialog.Trigger>
+          </div>
+
           <Dialog.Portal>
             <Dialog.Overlay className={styles.DialogOverlay} />
             <Dialog.Content className={styles.DialogContent}>
-              <Dialog.Title className={styles.DialogTitle}>
-                All Boards ({boards.length})
-              </Dialog.Title>
-              <div className={styles.BoardsList}>
-                {boards.map((board) => (
-                  <div
-                    key={board.id}
-                    className={classNames(
-                      styles.BoardItem,
-                      board.id === activeBoardId ? styles.ActiveBoard : ""
-                    )}
-                    onClick={() => setActiveBoard(board.id)}
-                  >
-                    <BoardIcon className={styles.BoardIcon} />
-                    <h2 className={styles.BoardTitle}>{board.title}</h2>
-                  </div>
-                ))}
-
-                <AddNewBoardModal>
-                  <button className={styles.CreateNewBoard}>
-                    <BoardIcon />
-                    <h2>+Create New Board</h2>
-                  </button>
-                </AddNewBoardModal>
-              </div>
-              <div className={styles.ThemeSwitchWrapper}>
-                <ThemeSwitch />
-              </div>
+              <BoardsList />
             </Dialog.Content>
           </Dialog.Portal>
         </Dialog.Root>
