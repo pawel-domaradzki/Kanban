@@ -5,6 +5,8 @@ import { ColumnTypes, KanbanTypes } from "@/types";
 import Task from "./Task";
 import ViewTaskModal from "../ViewTaskModal";
 import ColorPicker from "../ColorPicker";
+import { useBoardStore } from "@/store/BoardStore";
+import AddNewTaskModal from "../AddNewTaskModal";
 
 interface ColumnProps {
   index: number;
@@ -12,6 +14,9 @@ interface ColumnProps {
 }
 
 const Column: FC<ColumnProps> = ({ column, index }) => {
+  const { boards, activeBoardId, moveTask, moveColumn } = useBoardStore();
+
+  const activeBoard = boards.find(({ id }) => id === activeBoardId);
   return (
     <Draggable draggableId={column.id} index={index}>
       {(provided, snapshot) => (
@@ -62,6 +67,11 @@ const Column: FC<ColumnProps> = ({ column, index }) => {
                     </ViewTaskModal>
                   ))}
                   {provided.placeholder}
+                  {activeBoard && (
+                    <AddNewTaskModal activeBoard={activeBoard}>
+                      + task
+                    </AddNewTaskModal>
+                  )}
                 </div>
               )}
             </Droppable>
